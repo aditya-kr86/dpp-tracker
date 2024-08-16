@@ -1,0 +1,58 @@
+* {
+    margin: 0;
+    font-family: Merienda;
+    border: border-box;
+    background-color: #F7F9F2;
+}
+.navbar{
+    width: 98vw;
+    height: 8vh;
+    text-align: center;
+    display: flex;
+    justify-content: space-evenly;
+}
+h1{
+    font-family: Kalam;
+    color: #91DDCF;
+    font-size: xx-large;
+    font-weight: 900;
+    /* margin: 0px; */
+}
+.graph {
+    height: 40vh;
+    background-color: #F7F9F2;
+    color: white;
+    display: flex;
+    /* flex-direction: column-reverse; */
+    align-items: flex-end;
+    justify-content: space-evenly;
+    background-image: url("https://pixe.la/v1/users/pari-kumari/graphs/dpp-entry");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 100%;
+    /* height: auto; */
+    /* overflow: hidden; */
+    /* Hide the parts of the image that are outside the container */
+    position: relative;
+    left: calc(100% - 1520px);
+    /* Shift the image to show the rightmost part */
+    /* height: auto; */
+    width: 1520px;
+    /* margin-left: 10vw; */
+    /* Set the fixed width of the image */
+    /* max-width: none; */
+    /* Ensure the image width does not shrink */
+}
+.dpp-entry{
+    text-align: center;
+    margin-top: 2vh;
+    font-size: 20px;
+    
+}
+.footer{
+    width: 98vw;
+    height: 8vh;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}

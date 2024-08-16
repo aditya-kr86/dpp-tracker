@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% block title %} Home {% endblock title %}
+{% block body %}
+<div class="dpp-entry">
+    <h1>DPP Entry</h1>
+
+    <form action="/" method="POST">
+        <label for="physics">Physics :</label>
+        <input type="radio" id="physics1" name="physics" value="0" onclick="toggleInput('physics')"> 0
+        <input type="radio" id="physics1" name="physics" value="1" onclick="toggleInput('physics')"> 1
+        <input type="radio" id="physics2" name="physics" value="2" onclick="toggleInput('physics')"> 2
+        <input type="radio" id="physicsOther" name="physics" value="other" onclick="toggleInput('physics')">
+        Other
+        <input type="text" id="physics_input" name="physics_input" placeholder="Enter input" disabled>
+        <br><br>
+
+        <label for="chemistry">Chemistry :</label>
+        <input type="radio" id="chemistry1" name="chemistry" value="0" onclick="toggleInput('chemistry')"> 0
+        <input type="radio" id="chemistry1" name="chemistry" value="1" onclick="toggleInput('chemistry')"> 1
+        <input type="radio" id="chemistry2" name="chemistry" value="2" onclick="toggleInput('chemistry')"> 2
+        <input type="radio" id="chemistryOther" name="chemistry" value="other" onclick="toggleInput('chemistry')">
+        Other
+        <input type="text" id="chemistry_input" name="chemistry_input" placeholder="Enter input" disabled>
+        <br><br>
+
+        <label for="mathematics">Mathematics :</label>
+        <input type="radio" id="mathematics1" name="mathematics" value="0" onclick="toggleInput('mathematics')"> 0
+        <input type="radio" id="mathematics1" name="mathematics" value="1" onclick="toggleInput('mathematics')"> 1
+        <input type="radio" id="mathematics2" name="mathematics" value="2" onclick="toggleInput('mathematics')"> 2
+        <input type="radio" id="mathematicsOther" name="mathematics" value="other" onclick="toggleInput('mathematics')">
+        Other
+        <input type="text" id="mathematics_input" name="mathematics_input" placeholder="Enter input" disabled>
+        <br><br>
+
+        <button type="submit" class="btn btn-dark">Submit</button>
+    </form>
+</div>
+<div class="container my-3">
+    <h2 style="font-family: Kalam; font-weight: 900; color: #91DDCF ;">DPP's Data</h2>
+
+    {% if allTodo|length == 0 %}
+    <div class="alert alert-info" role="alert">
+        No DPP details that you have done, To Show Details!</div>
+    {% else %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Sl No.</th>
+                <th scope="col">DPP Details</th>
+                <th scope="col">Date</th>
+                <th scope="col">Update/Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for todo in allTodo %}
+            <tr>
+                <th scope="row">{{loop.index}}</th>
+                <td>{{todo.desc}}</td>
+                <td>{{todo.date_created}}</td>
+                <td>
+                    <a href="/update/{{todo.slno}}" class="btn btn-outline-dark btn-sm mx-1">Update</a>
+                    <a href="/delete/{{todo.slno}}" class="btn btn-outline-dark btn-sm mx-1">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+
+<script>
+    function toggleInput(subject) {
+        const input = document.getElementById(`${subject}_input`);
+        const otherRadio = document.getElementById(`${subject}Other`);
+        if (otherRadio.checked) {
+            input.disabled = false;
+        } else {
+            input.disabled = true;
+        }
+    }
+</script>
+{% endblock body %}
